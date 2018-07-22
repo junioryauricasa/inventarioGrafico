@@ -58,6 +58,12 @@ public class loginController implements Initializable {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, "Error SQL", ex);
         } catch (NoPropertiesSettedException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, "Propiedades no seteadas", ex);
+        }finally{
+           try {
+               sql.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
     }
 

@@ -32,8 +32,9 @@ public class mainController implements Initializable {
 
     //////////////////////Transiciones para mostrar las scenes de los menus/////////////////////////////
     private TranslateTransition showSceneAniadirClient;
-    private TranslateTransition showSceneAniadirBill;
+   // private TranslateTransition showSceneAniadirBill;
     private TranslateTransition showSceneAniadirProduct;
+    private TranslateTransition showSceneEditClient;
     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @FXML
@@ -117,10 +118,10 @@ public class mainController implements Initializable {
         showSceneAniadirClient.setInterpolator(Interpolator.LINEAR);
         showSceneAniadirClient.setToY(0);
         
-        showSceneAniadirBill = Transitions.createTransition(Duration.millis(300), dynamicPane);
-        showSceneAniadirBill.setFromY(400);
-        showSceneAniadirBill.setInterpolator(Interpolator.LINEAR);
-        showSceneAniadirBill.setToY(0);
+        showSceneEditClient = Transitions.createTransition(Duration.millis(300), dynamicPane);
+        showSceneEditClient.setFromY(400);
+        showSceneEditClient.setInterpolator(Interpolator.LINEAR);
+        showSceneEditClient.setToY(0);
     }
 
     private void setEventTransitions() {
@@ -154,9 +155,9 @@ public class mainController implements Initializable {
             Transitions.hoverScene(dynamicPane, rootAniadirClient, showSceneAniadirClient);
         });
         
-        imgAddBill.setOnMouseEntered(event -> {
+        imgEditClient.setOnMouseEntered(event -> {
                 dynamicPane.getChildren().clear();
-                Transitions.hoverScene(dynamicPane, rooEditClient, showSceneAniadirBill);
+                Transitions.hoverScene(dynamicPane, rooEditClient, showSceneEditClient);
         });
     }
     

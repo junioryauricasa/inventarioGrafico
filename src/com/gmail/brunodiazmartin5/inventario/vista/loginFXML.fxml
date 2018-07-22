@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="832.0" stylesheets="@../resources/login/login.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gmail.brunodiazmartin5.inventario.controlador.loginController">
+   <children>
+      <VBox prefHeight="437.0" prefWidth="294.0" styleClass="login">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="imgUser">
+               <image>
+                  <Image url="@../resources/login/user_icon.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="55.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="lblInfo" prefHeight="20.0" prefWidth="238.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUser" promptText="Usuario" styleClass="txtUser">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="txtPass" promptText="Contraseña" styleClass="txtPass">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="30.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Button fx:id="btnEntrar" mnemonicParsing="false" onMouseClicked="#login" styleClass="btnEntrar" text="Iniciar sesión">
+               <VBox.margin>
+                  <Insets left="75.0" top="40.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="294.0" prefHeight="437.0" prefWidth="539.0" styleClass="title">
+         <children>
+            <ImageView fitHeight="183.0" fitWidth="247.0" layoutX="160.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" styleClass="imgInventario">
+               <image>
+                  <Image url="@../resources/login/inventory_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="29.0" layoutX="500.0" layoutY="10.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true" styleClass="imgExit">
+               <image>
+                  <Image url="@../resources/login/exit_icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="79.0" layoutY="209.0" styleClass="lblInventario" text="INVENTARIO">
+               <font>
+                  <Font name="System Bold" size="62.0" />
+               </font>
+            </Label>
+            <Label layoutX="191.0" layoutY="281.0" styleClass="lblJava" text="JAVA">
+               <font>
+                  <Font name="System Bold" size="62.0" />
+               </font>
+            </Label>
+            <Label layoutX="267.0" layoutY="419.0" text="Programmed and developed by Bruno Díaz Martín">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+.login{
+	-fx-background-color: #17202A;
+}
+
+.imgUser{
+	-fx-effect: dropshadow( gaussian , black , 10, 0, 0, 0);
+}
+
+.txtUser, .txtPass, .btnEntrar{
+	-fx-background-color: #212F3C;
+	-fx-text-fill: #FAFAFA;
+	-fx-font-size: 13pt;
+	-fx-font-weight: bold;
+}
+
+.btnEntrar:hover{
+	-fx-scale-x: 1.2;
+	-fx-scale-y: 1.2;
+	-fx-cursor: hand;
+}
+
+.btnEntrar:pressed{
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.title{
+	-fx-background-color: #ECF0F1;
+}
+
+.imgExit:hover{
+	-fx-scale-x: 1.2;
+	-fx-scale-y: 1.2;
+	-fx-cursor: hand;
+}
+
+.imgExit:pressed{
+	-fx-scale-x: 1.1;
+	-fx-scale-y: 1.1;
+}
+
+.imgInventario{
+	-fx-effect: dropshadow( gaussian , black , 10, 0, 0, 0);
+}

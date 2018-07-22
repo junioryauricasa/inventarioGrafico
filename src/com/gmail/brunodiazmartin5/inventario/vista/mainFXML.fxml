@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root-pane" stylesheets="@../resources/main/main.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gmail.brunodiazmartin5.inventario.controlador.mainController">
+   <children>
+      <AnchorPane fx:id="dynamicPane" layoutX="137.0" prefHeight="415.0" prefWidth="482.0" styleClass="dynamic-pane" />
+      <AnchorPane layoutX="69.0" prefHeight="415.0" prefWidth="69.0" style="-fx-background-color: #212f3C;">
+         <children>
+            <VBox fx:id="vbDeleteSidebar" prefHeight="415.0" prefWidth="69.0" styleClass="sidebar">
+               <children>
+                  <ImageView fx:id="imgDeleteClient" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/deleteClient.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgDeleteBill" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/deleteBill.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgDeleteProduct" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/deleteProduct.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="vbSearchSidebar" prefHeight="415.0" prefWidth="69.0" styleClass="sidebar">
+               <children>
+                  <ImageView fx:id="imgSearchClient" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/searchClient.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgSearchBill" fitHeight="47.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/searchBill.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgSearchProduct" fitHeight="46.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/searchProduct.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="vbAniadirSidebar" prefHeight="415.0" prefWidth="69.0" styleClass="sidebar">
+               <children>
+                  <ImageView fx:id="imgAddClient" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/addClient.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgAddBill" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/addBill.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgAddProduct" fitHeight="53.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/addProduct.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="vbEditSidebar" prefHeight="415.0" prefWidth="69.0" styleClass="sidebar">
+               <children>
+                  <ImageView fx:id="imgEditClient" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/editClient.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="editBill" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/editBill.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="imgEditProduct" fitHeight="52.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+                     <image>
+                        <Image url="@../resources/main/editProduct.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox id="vb-sidebar" prefHeight="415.0" prefWidth="69.0" styleClass="menus">
+         <children>
+            <ImageView fx:id="imgAniadir" fitHeight="45.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-no-clickable">
+               <image>
+                  <Image url="@../resources/main/aniadir.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgEdit" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-no-clickable">
+               <image>
+                  <Image url="@../resources/main/edit.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgDelete" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-no-clickable">
+               <image>
+                  <Image url="@../resources/main/delete.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgSearch" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-no-clickable">
+               <image>
+                  <Image url="@../resources/main/search.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgSettings" fitHeight="39.0" fitWidth="50.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+               <image>
+                  <Image url="@../resources/main/settings.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="80.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgExit" fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-clickable">
+               <image>
+                  <Image url="@../resources/main/logout.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

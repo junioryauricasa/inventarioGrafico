@@ -12,7 +12,7 @@ import com.gmail.brunodiazmartin5.interfaces.EnqueueableData;
  *
  * @author Bruno
  */
-public class Factura implements EnqueueableData{
+public class Factura implements EnqueueableData {
 
     private int id;
     private Cliente cliente;
@@ -34,7 +34,7 @@ public class Factura implements EnqueueableData{
         this.total = total;
         detalles = new ArrayList<>();
     }
-    
+
     public Factura(int id, Cliente cliente, double subtotal, double descuento, double impuesto, double total) {
         this(cliente, subtotal, descuento, impuesto, total);
         this.id = id;
@@ -54,14 +54,14 @@ public class Factura implements EnqueueableData{
     }
 
     public void setCliente(Cliente c) {
-        this.cliente=c;
+        this.cliente = c;
     }
 
     public double getSubtotal() {
-        if(!detalles.isEmpty() && subtotal==0){
+        if (!detalles.isEmpty() && subtotal == 0) {
             detalles.forEach(p -> subtotal += p.getCantidad() * p.getPrecio());
         }
-       
+
         return subtotal;
     }
 
@@ -86,12 +86,12 @@ public class Factura implements EnqueueableData{
     }
 
     public double getTotal() {
-       if(!detalles.isEmpty() && total==0) {
+        if (!detalles.isEmpty() && total == 0) {
             detalles.forEach(p -> total += p.getCantidad() * p.getPrecio());
-            total -= total * (descuento /100);
+            total -= total * (descuento / 100);
             total += total * (impuesto / 100);
-            
-       }
+
+        }
 
         return total;
     }
@@ -111,33 +111,65 @@ public class Factura implements EnqueueableData{
     public void addDetalle(DetalleFactura detalle) {
         detalles.add(detalle);
     }
-    
-    public static double generarTotal(double cantidad, double precio, double descuento, double impuesto){
+
+    public static double generarTotal(double cantidad, double precio, double descuento, double impuesto) {
         double subtotal = precio * cantidad;
-        double total = subtotal-(subtotal*(descuento/100));
-        total += subtotal*(impuesto/100);
-        
+        double total = subtotal - (subtotal * (descuento / 100));
+        total += subtotal * (impuesto / 100);
+
         return total;
     }
-    
+
     @Override
-    public void execute() {
+    public void execute(int sqlType) {
         Connection conn = Conexion.getInstance().getConnection();
-        
-        try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO facturas VALUES(?, ?, ?, ?, ?, ?)");
-            ps.setInt(1, id);
-            ps.setString(2, cliente.getDni());
-            ps.setDouble(3, getSubtotal());
-            ps.setDouble(4, descuento);
-            ps.setDouble(5, impuesto);
-            ps.setDouble(6, getTotal());
-            
-            ps.executeUpdate();
-            
-            detalles.forEach(df -> df.save(id));
-        } catch (SQLException ex) {
-            Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+
+        switch (sqlType) {
+            case 1:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("INSERT INTO facturas VALUES(?, ?, ?, ?, ?, ?)");
+                    ps.setInt(1, id);
+                    ps.setString(2, cliente.getDni());
+                    ps.setDouble(3, getSubtotal());
+                    ps.setDouble(4, descuento);
+                    ps.setDouble(5, impuesto);
+                    ps.setDouble(6, getTotal());
+                    
+                    ps.executeUpdate();
+                    
+                    detalles.forEach(df -> df.save(id));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+                }   break;
+            case 2:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("UPDATE facturas SET dni_cli_fac=?, subtotal_fac=?, descuento_fac=?, impuesto_fac=?, total_fac=? WHERE id_fac=?");
+                    ps.setString(1, cliente.getDni());
+                    ps.setDouble(2, getSubtotal());
+                    ps.setDouble(3, descuento);
+                    ps.setDouble(4, impuesto);
+                    ps.setDouble(5, getTotal());
+                    ps.setInt(6, id);
+                    
+                    ps.executeUpdate();
+                    
+                    detalles.forEach(df -> df.save(id));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+                }   break;
+            case 3:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM facturas WHERE id_fac=?");
+                    ps.setInt(1, id);
+                    
+                    ps.executeUpdate();
+                    
+                    detalles.forEach(df -> df.save(id));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+                }   break;
+            default:
+                break;
         }
     }
 }

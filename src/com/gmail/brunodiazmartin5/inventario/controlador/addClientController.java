@@ -43,7 +43,7 @@ public class addClientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        asyncWriter = new AsyncDataWriter();
+        asyncWriter = new AsyncDataWriter(1);
         asyncWriter.addObserver(() -> System.out.println("[Cliente] END TASK"));
         
         Tooltip.install(imgGuardar, new Tooltip("Guardar"));

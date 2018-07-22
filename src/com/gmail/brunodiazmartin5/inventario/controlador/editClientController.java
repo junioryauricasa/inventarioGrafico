@@ -2,6 +2,7 @@ package com.gmail.brunodiazmartin5.inventario.controlador;
 
 import com.gmail.brunodiazmartin5.exceptions.ConnectioNotOpenedException;
 import com.gmail.brunodiazmartin5.exceptions.NoPropertiesSettedException;
+import com.gmail.brunodiazmartin5.inventario.modelo.Cliente;
 import com.gmail.brunodiazmartin5.io.AsyncDataReader;
 import com.gmail.brunodiazmartin5.io.AsyncDataWriter;
 import com.gmail.brunodiazmartin5.mysql.MySQL;
@@ -59,21 +60,23 @@ public class editClientController implements Initializable {
         if (dniBuscar.equals("")) {
             lblInfo.setText("Introduzca el DNI del cliente a editar");
         } else {
-            PreparedStatement ps=null;
+            PreparedStatement ps = null;
             try {
                 ResultSet rs = sql.query("SELECT * FROM clientes WHERE dni_cli=?", dniBuscar);
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     txtDNI.setText(rs.getString(1));
                     txtNombre.setText(rs.getString(2));
                     txtApellidos.setText(rs.getString(3));
                     txtMovil.setText(rs.getString(4));
                     txtTelefono.setText(rs.getString(5));
                     txtDireccion.setText(rs.getString(6));
-                }else lblInfo.setText("No existe ningún cliente con ese DNI");
+                } else {
+                    lblInfo.setText("No existe ningún cliente con ese DNI");
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(editClientController.class.getName()).log(Level.SEVERE, "Error SQL", ex);
-            }catch (ConnectioNotOpenedException ex) {
+            } catch (ConnectioNotOpenedException ex) {
                 Logger.getLogger(editClientController.class.getName()).log(Level.SEVERE, "Conexión no abierta", ex);
             }
         }
@@ -81,11 +84,31 @@ public class editClientController implements Initializable {
 
     @FXML
     private void editClient(MouseEvent event) {
+        lblInfo.setText("");
+        String nombre = txtNombre.getText();
+        String apellidos = txtApellidos.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String movil = txtMovil.getText();
+        String dni = txtDNI.getText();
+        
+        if (anyFieldEmpty(nombre, apellidos, direccion, telefono, movil, dni)) {
+            lblInfo.setText("Rellene todos los datos");
+        } else {
+             if (!isNumberValid(movil) || !isNumberValid(telefono)) {
+                lblInfo.setText("Móvil o fijo incorrectos");
+            } else {
+                Cliente c = new Cliente(nombre, apellidos, dni, direccion, movil, telefono);
+                asyncWriter.accept(c);
+                asyncWriter.run();
+            }
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        asyncWriter = new AsyncDataWriter();
+        asyncWriter = new AsyncDataWriter(2);
+        asyncWriter.addObserver(() -> System.out.println("[EDIT CLIENT] END TASK"));
         try {
             sql = new MySQL("com.mysql.jdbc.Driver");
             sql.setProperty("bd.server", "jdbc:mysql://localhost:3306/inventario");
@@ -106,4 +129,18 @@ public class editClientController implements Initializable {
         Tooltip.install(imgEditar, new Tooltip("Guardar"));
     }
 
+     private boolean anyFieldEmpty(String... fields) {
+        for (String s : fields) {
+            if (s.equals("")) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean isNumberValid(String number) {
+        return number.length() == 9;
+    }
+    
 }

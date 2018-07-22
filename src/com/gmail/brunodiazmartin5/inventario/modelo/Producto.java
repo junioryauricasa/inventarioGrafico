@@ -11,7 +11,8 @@ import com.gmail.brunodiazmartin5.interfaces.EnqueueableData;
  *
  * @author Bruno
  */
-public class Producto implements EnqueueableData{
+public class Producto implements EnqueueableData {
+
     private int id;
     private String descripcion;
     private double precio;
@@ -28,8 +29,6 @@ public class Producto implements EnqueueableData{
         this(descripcion, precio);
         this.id = id;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -54,29 +53,55 @@ public class Producto implements EnqueueableData{
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return id + " " + descripcion;
     }
 
     @Override
-    public void execute() {
+    public void execute(int sqlType) {
         Connection conn = Conexion.getInstance().getConnection();
-        try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO productos VALUES(?, ?, ?)");
-            ps.setInt(1, id);
-            ps.setString(2, descripcion);
-            ps.setDouble(3, precio);
-            
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+
+        switch (sqlType) {
+            case 1:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("INSERT INTO productos VALUES(?, ?, ?)");
+                    ps.setInt(1, id);
+                    ps.setString(2, descripcion);
+                    ps.setDouble(3, precio);
+
+                    ps.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 2:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("UPDATE productos SET descripcion_pro=?, precio_pro=? WHERE id_por=?");
+                    ps.setString(1, descripcion);
+                    ps.setDouble(2, precio);
+                    ps.setInt(3, id);
+
+                    ps.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 3:
+                try {
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM WHERE id_por=?");
+                    ps.setInt(1, id);
+
+                    ps.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            default:
+                break;
         }
-        
-        
-        
-        
+
     }
-    
+
 }

@@ -1,0 +1,2 @@
+Para que la conexión a la base de datos funcione correctamente, se debe modificar la clase Conexion del paquete modelo
+y el loginController(metodo initialize) con los datos del servidor, usuario y cotraseña de la base de datos.

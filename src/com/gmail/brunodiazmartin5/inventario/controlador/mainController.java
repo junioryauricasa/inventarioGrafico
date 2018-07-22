@@ -8,6 +8,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -86,6 +88,8 @@ public class mainController implements Initializable {
     private AnchorPane root;
     
     private double xOffset, yOffset;
+    @FXML
+    private ScrollPane scrollPane;
 
     private void createSidebarTransitions() {
         openNav = Transitions.createTransition(Duration.millis(100), vbAniadirSidebar);
@@ -183,6 +187,9 @@ public class mainController implements Initializable {
         
         rootAniadirClient = Scenes.createScene(rootAniadirClient, "vista/addClientFXML.fxml");
         rootAniadirBill = Scenes.createScene(rootAniadirBill, "vista/editClientFXML.fxml");
+        
+        scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);
         
         Platform.runLater(() -> {
             closeFastNav.setToX(-(vbAniadirSidebar.getWidth()));

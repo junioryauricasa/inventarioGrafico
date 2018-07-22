@@ -76,7 +76,7 @@ public class loginController implements Initializable {
                 if(rs.next()){
                     if(password.equals(rs.getString(1))){
                         FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(Inventario.class.getResource("vista/mainFXML.fxml"));
+                        fxmlLoader.setLocation(Inventario.class.getResource("vista/loginFXML.fxml"));
                         
                         Stage stage = new Stage();
                         Scene scene=null;

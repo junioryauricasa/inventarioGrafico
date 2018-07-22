@@ -53,6 +53,7 @@ public class editClientController implements Initializable {
 
     @FXML
     private void loadFieldsData(MouseEvent event) {
+        lblInfo.setText("");
         String dniBuscar = txtDNIBuscar.getText();
 
         if (dniBuscar.equals("")) {
@@ -69,7 +70,7 @@ public class editClientController implements Initializable {
                     txtMovil.setText(rs.getString(4));
                     txtTelefono.setText(rs.getString(5));
                     txtDireccion.setText(rs.getString(6));
-                }
+                }else lblInfo.setText("No existe ningún cliente con ese DNI");
             } catch (SQLException ex) {
                 Logger.getLogger(editClientController.class.getName()).log(Level.SEVERE, "Error SQL", ex);
             }catch (ConnectioNotOpenedException ex) {

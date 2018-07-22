@@ -81,7 +81,9 @@ public class mainController implements Initializable {
     @FXML
     private AnchorPane dynamicPane;
 
-    private Parent rootAniadirClient, rootAniadirBill;
+    private Parent rootAniadirClient;
+    private Parent rooEditClient;
+    
     @FXML
     private ImageView imgExit;
     @FXML
@@ -154,7 +156,7 @@ public class mainController implements Initializable {
         
         imgAddBill.setOnMouseEntered(event -> {
                 dynamicPane.getChildren().clear();
-                Transitions.hoverScene(dynamicPane, rootAniadirBill, showSceneAniadirBill);
+                Transitions.hoverScene(dynamicPane, rooEditClient, showSceneAniadirBill);
         });
     }
     
@@ -186,7 +188,7 @@ public class mainController implements Initializable {
         imgExit.setOnMouseClicked(event -> Platform.exit());
         
         rootAniadirClient = Scenes.createScene(rootAniadirClient, "vista/addClientFXML.fxml");
-        rootAniadirBill = Scenes.createScene(rootAniadirBill, "vista/editClientFXML.fxml");
+        rooEditClient = Scenes.createScene(rooEditClient, "vista/editClientFXML.fxml");
         
         scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollBarPolicy.NEVER);

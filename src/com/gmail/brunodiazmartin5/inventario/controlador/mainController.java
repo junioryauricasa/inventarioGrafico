@@ -175,6 +175,9 @@ public class mainController implements Initializable {
         Tooltip.install(imgDeleteBill, new Tooltip("Eliminar factura"));
         Tooltip.install(imgDeleteProduct, new Tooltip("Eliminar producto"));
         Tooltip.install(imgSearch, new Tooltip("Buscar"));
+        Tooltip.install(imgSearchClient, new Tooltip("Buscar cliente"));
+        Tooltip.install(imgSearchBill, new Tooltip("Buscar factura"));
+        Tooltip.install(imgSearchProduct, new Tooltip("Buscar producto"));
         Tooltip.install(imgSettings, new Tooltip("Opciones"));
         Tooltip.install(imgExit, new Tooltip("Salir"));
     }
